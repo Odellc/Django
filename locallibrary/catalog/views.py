@@ -1,10 +1,14 @@
 from django.shortcuts import render
 from catalog.models import Book, Author, BookInstance, Genre, Language
+from django.views import generic
 
 # Create your views here.
 
 def index(request):
     """View function for home page of site."""
+
+    num_with_name = Book.objects.all()
+    print(dir(num_with_name))
 
     # Generate counts of some of the main objects
     num_books = Book.objects.all().count()
@@ -28,3 +32,19 @@ def index(request):
 
     # Render the HTML template index.html with the data in the context variable
     return render(request, 'catalog/index.html', context=context)
+
+class BookListView(generic.ListView):
+    model = Book
+    paginate_by = 2
+
+class BookDetailView(generic.DetailView):
+    model = Book
+    paginate_by = 2
+
+class AuthorListView(generic.ListView):
+    model = Author
+    paginate_by = 2
+
+class AuthorDetailView(generic.DetailView):
+    model = Author
+    paginate_by = 2
