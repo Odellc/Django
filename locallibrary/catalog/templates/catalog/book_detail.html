@@ -16,11 +16,21 @@
 
   {% for copy in book.bookinstance_set.all %}
   <hr />
-  <p
-    class="{% if copy.status == 'a' %}text-success{% elif copy.status == 'm' %}text-danger{% else %}text-warning{% endif %}"
-  >
-    {{ copy.get_status_display }}
-  </p>
+  <div>
+    <p
+      class="{% if copy.status == 'a' %}text-success{% elif copy.status == 'm' %}text-danger{% else %}text-warning{% endif %}">
+      {{ copy.get_status_display }}
+    </p>
+
+    {% if copy.status == 'o' %}
+    {% if perms.catalog.can_mark_returned %}
+    <!-- We can mark a BookInstance as returned. -->
+    <!-- Perhaps add code to link to a "book return" view here. -->
+    <input type="checkbox"> Is book checked out?
+    {% endif %}
+
+    {% endif %}
+  </div>
   {% if copy.status != 'a' %}
   <p><strong>Due to be returned:</strong> {{ copy.due_back }}</p>
   {% endif %}
