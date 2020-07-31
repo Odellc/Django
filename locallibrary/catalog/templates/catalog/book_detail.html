@@ -29,6 +29,9 @@
     <input type="checkbox"> Is book checked out?
     {% endif %}
 
+    {% if perms.catalog.can_mark_returned %}- <a href="{% url 'renew-book-librarian' copy.id %}">Renew</a>
+    {% endif %}
+
     {% endif %}
   </div>
   {% if copy.status != 'a' %}
