@@ -4,7 +4,6 @@ import uuid # Required for unique book instances
 from django.contrib.auth.models import User
 from datetime import date
 
-
 # Create your models here.
 class MyModelName(models.Model):
     """A typical class defining a model, derived from the Model class."""
@@ -52,7 +51,7 @@ class Book(models.Model):
 
     language = models.ForeignKey('Language', on_delete=models.SET_NULL, null=True)
 
-    
+
     def __str__(self):
         """String for representing the Model object."""
         return self.title
