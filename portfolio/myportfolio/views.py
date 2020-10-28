@@ -12,8 +12,6 @@ from catalog.forms import RenewBookForm
 
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
-
-
 # Create your views here.
 
 def index(request):
