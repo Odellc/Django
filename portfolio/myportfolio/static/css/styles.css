@@ -21,7 +21,7 @@ body {
 
 .sidebar a {
   display: block;
-  color: black;
+  color: rgb(68, 68, 68);
   padding: 16px;
   text-decoration: none;
 }
